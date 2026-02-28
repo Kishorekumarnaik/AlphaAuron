@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Auron Pvt Ltd</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+
+html{scroll-behavior:smooth;}
+
+body{
+background:#070B1F;
+color:white;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+position:fixed;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#FFD700;
+letter-spacing:1px;
+}
+
+nav a{
+color:#ddd;
+margin-left:20px;
+text-decoration:none;
+font-size:14px;
+}
+
+nav a:hover{color:#FFD700;}
+
+/* ===== HERO ===== */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:
+radial-gradient(circle at 20% 20%,#FFD70022,transparent),
+radial-gradient(circle at 80% 80%,#FFD70011,transparent);
+}
+
+.hero h1{
+font-size:52px;
+color:#FFD700;
+}
+
+.hero p{
+margin-top:15px;
+max-width:700px;
+color:#ccc;
+line-height:1.7;
+}
+
+.btn{
+margin-top:30px;
+padding:14px 28px;
+background:#FFD700;
+border:none;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+text-decoration:none;
+color:black;
+transition:.3s;
+}
+
+.btn:hover{transform:scale(1.05);}
+
+/* ===== SECTION ===== */
+section{
+padding:90px 8%;
+text-align:center;
+}
+
+.section-title{
+font-size:36px;
+color:#FFD700;
+margin-bottom:50px;
+}
+
+/* ===== PACKAGES ===== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:18px;
+padding:30px;
+border:1px solid rgba(255,255,255,0.08);
+transition:.35s;
+backdrop-filter:blur(15px);
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#FFD70066;
+box-shadow:0 0 30px #FFD70022;
+}
+
+.card h3{
+color:#FFD700;
+margin-bottom:15px;
+}
+
+.card p{
+color:#bbb;
+font-size:14px;
+line-height:1.6;
+}
+
+/* ===== INITIATIVE SECTION ===== */
+.initiative{
+background:#050817;
+}
+
+.initiative p{
+color:#ccc;
+margin-top:10px;
+}
+
+.link-btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 24px;
+border:1px solid #FFD700;
+border-radius:25px;
+color:#FFD700;
+text-decoration:none;
+transition:.3s;
+}
+
+.link-btn:hover{
+background:#FFD700;
+color:black;
+}
+
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:40px;
+color:#777;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.hero h1{font-size:34px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<div class="logo">Alpha Auron</div>
+<div>
+<a href="#packages">Packages</a>
+<a href="#initiative">Group</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Alpha Auron Pvt Ltd</h1>
+<p>
+A next-generation fintech ecosystem delivering trading education,
+evaluation environments, professional tools, and a global trader community.
+</p>
+
+<a href="#packages" class="btn">Explore Ecosystem</a>
+</div>
+
+<!-- PACKAGES -->
+<section id="packages">
+<h2 class="section-title">Alpha Auron Ecosystem</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Alpha Auron Nexus</h3>
+<p>
+Evaluation-based simulated funded trading environment designed
+to help traders develop discipline and performance skills.
+</p>
+</div>
+
+<div class="card">
+<h3>Alpha Auron Academy</h3>
+<p>
+Structured trading education programs, mentorship sessions,
+and professional learning pathways for traders.
+</p>
+</div>
+
+<div class="card">
+<h3>Alpha Auron Labs</h3>
+<p>
+Research and development division focused on indicators,
+analytics tools, and innovative trading solutions.
+</p>
+</div>
+
+<div class="card">
+<h3>Alpha Auron Pro</h3>
+<p>
+Premium services including advanced analytics,
+exclusive insights, and professional trader resources.
+</p>
+</div>
+
+<div class="card">
+<h3>Alpha Auron Community</h3>
+<p>
+Collaborative ecosystem connecting traders worldwide
+through discussions, events, and shared learning.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- INITIATIVE -->
+<section id="initiative" class="initiative">
+<h2 class="section-title">An Initiative of THE KGV GROUP</h2>
+
+<p>
+Alpha Auron Pvt Ltd is an initiative of <strong>THE KGV GROUP
+(Krish Global Ventures)</strong>, focused on building innovative
+digital and financial ecosystems.
+</p>
+
+<a class="link-btn" href="https://krishglobalventures.org" target="_blank">
+Visit Krish Global Ventures →
+</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+© 2026 Alpha Auron Pvt Ltd — All Rights Reserved
+</footer>
+
+</body>
+</html>
