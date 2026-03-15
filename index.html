@@ -1,271 +1,2052 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alpha Auron Pvt Ltd</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+<title>Alpha Auron Voting</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <style>
 
-/* ===== GLOBAL ===== */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
-
-html{scroll-behavior:smooth;}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-background:#070B1F;
-color:white;
+font-family:'Inter',sans-serif;
+background:linear-gradient(180deg,#ffffff,#fafafa);
+color:#111;
+overflow-x:hidden
 }
 
-/* ===== NAVBAR ===== */
-nav{
+/* PARTICLES BACKGROUND */
+
+body::before{
+content:"";
 position:fixed;
 width:100%;
-padding:18px 8%;
+height:100%;
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.15),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.15),transparent 40%);
+z-index:-1
+}
+
+section{
+padding:70px 7%
+}
+
+h1{
+font-size:44px;
+font-weight:700;
+letter-spacing:-1px
+}
+
+h2{
+font-size:28px;
+font-weight:700;
+margin-bottom:16px
+}
+
+h3{
+font-size:18px;
+font-weight:600
+}
+
+p{
+font-size:15px;
+color:#666
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.3);
-backdrop-filter:blur(10px);
-z-index:1000;
+padding:16px 7%;
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #eee;
+z-index:1000
 }
 
-.logo{
-font-size:24px;
-font-weight:700;
-color:#FFD700;
-letter-spacing:1px;
+.logo-rect{
+width:160px;
+height:44px;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 4px 14px rgba(0,0,0,0.08)
 }
 
-nav a{
-color:#ddd;
-margin-left:20px;
-text-decoration:none;
-font-size:14px;
+.logo-rect img{
+width:100%;
+height:100%;
+object-fit:cover
 }
 
-nav a:hover{color:#FFD700;}
+/* HERO */
 
-/* ===== HERO ===== */
 .hero{
-height:100vh;
+min-height:80vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
-background:
-radial-gradient(circle at 20% 20%,#FFD70022,transparent),
-radial-gradient(circle at 80% 80%,#FFD70011,transparent);
+padding-top:120px
 }
 
-.hero h1{
-font-size:52px;
-color:#FFD700;
+.hero span{
+background:linear-gradient(90deg,#e11d2e,#ff7a00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent
 }
 
 .hero p{
-margin-top:15px;
-max-width:700px;
-color:#ccc;
-line-height:1.7;
+margin-top:10px;
+margin-bottom:30px
 }
+
+/* BUTTON */
 
 .btn{
-margin-top:30px;
-padding:14px 28px;
-background:#FFD700;
+padding:15px 32px;
+border-radius:40px;
 border:none;
-border-radius:30px;
 font-weight:600;
 cursor:pointer;
-text-decoration:none;
-color:black;
-transition:.3s;
+transition:.3s
 }
 
-.btn:hover{transform:scale(1.05);}
+.primary{
+background:linear-gradient(90deg,#e11d2e,#ff7a00);
+color:#fff;
+box-shadow:0 10px 20px rgba(225,29,46,0.2)
+}
 
-/* ===== SECTION ===== */
-section{
-padding:90px 8%;
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 16px 30px rgba(0,0,0,0.15)
+}
+
+/* STEP INDICATOR */
+
+.steps{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+margin-bottom:30px
+}
+
+.step{
+padding:10px 20px;
+border-radius:30px;
+background:#f3f3f3;
+font-size:14px;
+font-weight:500
+}
+
+/* OPTIONS */
+
+.vote-list{
+display:flex;
+flex-direction:column;
+gap:14px;
+margin-top:26px;
+max-width:640px
+}
+
+.vote-pill{
+padding:20px;
+border-radius:50px;
+border:2px solid #eee;
 text-align:center;
+cursor:pointer;
+transition:.3s;
+font-weight:500;
+background:#fff
 }
 
-.section-title{
-font-size:36px;
-color:#FFD700;
-margin-bottom:50px;
+.vote-pill:hover{
+border-color:#e11d2e;
+background:#fff5f5;
+transform:scale(1.02)
 }
 
-/* ===== PACKAGES ===== */
+/* COINS */
+
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:24px;
+margin-top:28px
 }
 
-.card{
-background:rgba(255,255,255,0.05);
-border-radius:18px;
-padding:30px;
-border:1px solid rgba(255,255,255,0.08);
+.vote-card{
+padding:28px;
+border-radius:20px;
+border:1px solid #eee;
+text-align:center;
+cursor:pointer;
+background:#fff;
 transition:.35s;
-backdrop-filter:blur(15px);
+position:relative;
+overflow:hidden
 }
 
-.card:hover{
-transform:translateY(-10px);
-border-color:#FFD70066;
-box-shadow:0 0 30px #FFD70022;
+.vote-card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 18px 35px rgba(0,0,0,0.1)
 }
 
-.card h3{
-color:#FFD700;
-margin-bottom:15px;
+.vote-card::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);
+transition:.6s
 }
 
-.card p{
-color:#bbb;
-font-size:14px;
-line-height:1.6;
+.vote-card:hover::after{
+left:100%
 }
 
-/* ===== INITIATIVE SECTION ===== */
-.initiative{
-background:#050817;
+.coin-img{
+width:80px;
+margin-bottom:10px
 }
 
-.initiative p{
-color:#ccc;
-margin-top:10px;
+.price{
+font-size:24px;
+font-weight:700;
+color:#e11d2e
 }
 
-.link-btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 24px;
-border:1px solid #FFD700;
-border-radius:25px;
-color:#FFD700;
-text-decoration:none;
-transition:.3s;
+/* CALCULATOR */
+
+.calculator{
+max-width:440px;
+margin:auto;
+text-align:center;
+padding:30px;
+border-radius:20px;
+background:#fff;
+box-shadow:0 18px 35px rgba(0,0,0,0.08)
 }
 
-.link-btn:hover{
-background:#FFD700;
-color:black;
+input{
+width:100%;
+padding:15px;
+margin-top:14px;
+border-radius:12px;
+border:2px solid #eee;
+font-size:15px
 }
 
-/* ===== FOOTER ===== */
+input:focus{
+border-color:#e11d2e;
+outline:none
+}
+
+.total{
+font-size:38px;
+font-weight:700;
+color:#ff7a00;
+margin:14px 0
+}
+
+/* MODAL */
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+display:none;
+align-items:center;
+justify-content:center;
+backdrop-filter:blur(6px)
+}
+
+.modal-box{
+background:#fff;
+padding:28px;
+border-radius:18px;
+width:92%;
+max-width:400px;
+position:relative;
+box-shadow:0 25px 50px rgba(0,0,0,0.2)
+}
+
+.close-btn{
+position:absolute;
+right:16px;
+top:12px;
+cursor:pointer;
+font-size:18px
+}
+
+.modal-box input{
+margin-bottom:8px
+}
+
+/* FOOTER */
+
 footer{
 text-align:center;
 padding:40px;
-color:#777;
-border-top:1px solid rgba(255,255,255,0.05);
+color:#888;
+font-size:14px
 }
 
 /* MOBILE */
-@media(max-width:600px){
-.hero h1{font-size:34px;}
+
+@media(max-width:768px){
+
+h1{
+font-size:32px
 }
 
+section{
+padding:60px 6%
+}
+
+.hero{
+padding-top:110px
+}
+
+}
+
+/* REWARDS SECTION */
+
+.rewards{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.reward-title{
+font-size:22px;
+letter-spacing:2px;
+color:#555;
+margin-bottom:10px;
+}
+
+.reward-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.reward-box{
+display:flex;
+align-items:center;
+gap:20px;
+padding:28px;
+border-radius:20px;
+margin:20px auto;
+max-width:650px;
+background:#fff;
+border:1px solid #eee;
+box-shadow:0 12px 30px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.reward-box:hover{
+transform:translateY(-6px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.reward-icon{
+width:70px;
+height:70px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+
+background:linear-gradient(90deg,#e11d2e,#ff7a00);
+color:#fff;
+}
+
+.reward-price{
+font-size:28px;
+font-weight:700;
+margin-top:5px;
+color:#e11d2e;
+}
+
+/* TIMELINE LIGHT THEME */
+
+.timeline{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.timeline-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.timeline-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.timeline-box{
+max-width:750px;
+margin:auto;
+background:#fff;
+padding:40px;
+border-radius:22px;
+border:1px solid #eee;
+box-shadow:0 18px 35px rgba(0,0,0,0.08);
+}
+
+.timeline-row{
+display:flex;
+justify-content:space-between;
+padding:18px 0;
+font-size:18px;
+border-bottom:1px dashed #ddd;
+}
+
+.timeline-row:last-child{
+border-bottom:none;
+}
+
+/* COUNTDOWN TIMER */
+
+.countdown-box{
+display:flex;
+justify-content:space-between;
+margin-top:30px;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.time{
+flex:1;
+background:#0f1d3a;
+padding:20px;
+border-radius:16px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.time span{
+font-size:32px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.time p{
+font-size:14px;
+margin-top:6px;
+color:#aaa;
+}
+
+/* SUCCESS POPUP */
+
+.success-popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000
+}
+
+.success-box{
+background:#fff;
+padding:40px;
+border-radius:18px;
+text-align:center;
+max-width:360px
+}
+
+.success-icon{
+font-size:60px;
+color:#16a34a;
+margin-bottom:10px
+}
+
+/* COMMUNITY STATS */
+
+.stats{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.stats-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.stats-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:50px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+max-width:900px;
+margin:auto;
+}
+
+.stat-card{
+background:#fff;
+padding:30px;
+border-radius:20px;
+border:1px solid #eee;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-6px);
+box-shadow:0 22px 40px rgba(0,0,0,0.12);
+}
+
+.stat-card h2{
+font-size:36px;
+color:#e11d2e;
+margin-bottom:6px;
+}
+
+.stat-card p{
+color:#666;
+font-size:15px;
+}
+
+/* LEADERBOARD SECTION */
+
+.leaderboard{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.leaderboard-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.leaderboard-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.leaderboard-box{
+max-width:700px;
+margin:auto;
+background:#fff;
+border-radius:20px;
+border:1px solid #eee;
+box-shadow:0 16px 35px rgba(0,0,0,0.08);
+padding:30px;
+}
+
+.leader-row{
+display:flex;
+justify-content:space-between;
+padding:16px 0;
+font-size:17px;
+border-bottom:1px dashed #ddd;
+}
+
+.leader-row:last-child{
+border-bottom:none;
+}
+
+.leader-row span:first-child{
+font-weight:600;
+}
+
+.leader-row span:last-child{
+color:#e11d2e;
+font-weight:600;
+}
+
+/* RULES SECTION */
+
+.rules{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.rules-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.rules-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.rules-box{
+max-width:900px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+}
+
+.rule-item{
+background:#fff;
+padding:25px;
+border-radius:18px;
+border:1px solid #eee;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+transition:.3s;
+text-align:left;
+}
+
+.rule-item:hover{
+transform:translateY(-6px);
+box-shadow:0 22px 40px rgba(0,0,0,0.12);
+}
+
+.rule-item h3{
+margin-bottom:8px;
+font-size:18px;
+}
+
+.rule-item p{
+font-size:14px;
+color:#666;
+}
+
+/* FAQ SECTION */
+
+.faq{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.faq-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.faq-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.faq-box{
+max-width:800px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.faq-item{
+background:#fff;
+padding:25px;
+border-radius:18px;
+border:1px solid #eee;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+text-align:left;
+transition:.3s;
+}
+
+.faq-item:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.faq-item h3{
+margin-bottom:8px;
+font-size:18px;
+}
+
+.faq-item p{
+color:#666;
+font-size:14px;
+}
+
+/* ABOUT SECTION */
+
+.about{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.about-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.about-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.about-container{
+max-width:1000px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about-text{
+text-align:left;
+color:#555;
+font-size:15px;
+line-height:1.7;
+}
+
+.about-text p{
+margin-bottom:16px;
+}
+
+.about-highlights{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.about-card{
+background:#fff;
+padding:22px;
+border-radius:18px;
+border:1px solid #eee;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+transition:.3s;
+text-align:left;
+}
+
+.about-card:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.about-card h3{
+margin-bottom:6px;
+font-size:18px;
+}
+
+.about-card p{
+font-size:14px;
+color:#666;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.about-container{
+grid-template-columns:1fr;
+}
+
+}
+
+/* WHY PARTICIPATE SECTION */
+
+.why{
+padding:80px 7%;
+text-align:center;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.why-title{
+font-size:20px;
+letter-spacing:3px;
+color:#666;
+margin-bottom:10px;
+}
+
+.why-heading{
+font-size:40px;
+font-weight:700;
+margin-bottom:50px;
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+max-width:1000px;
+margin:auto;
+}
+
+.why-card{
+background:#fff;
+padding:28px;
+border-radius:18px;
+border:1px solid #eee;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.why-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.why-card h3{
+margin-bottom:8px;
+font-size:18px;
+}
+
+.why-card p{
+font-size:14px;
+color:#666;
+}
+
+/* PREMIUM FOOTER */
+
+.site-footer{
+
+padding:70px 7% 25px;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,120,120,0.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,160,0,0.12),transparent 40%),
+linear-gradient(180deg,#ffffff,#f5f5f5);
+
+border-top:1px solid #eee;
+
+}
+
+.footer-container{
+
+max-width:1100px;
+margin:auto;
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:40px;
+
+}
+
+.footer-logo{
+
+width:150px;
+margin-bottom:15px;
+
+}
+
+.footer-logo img{
+
+width:100%;
+border-radius:10px;
+
+}
+
+.site-footer h3{
+
+margin-bottom:12px;
+font-size:18px;
+
+}
+
+.site-footer p{
+
+font-size:14px;
+color:#666;
+line-height:1.6;
+
+}
+
+.footer-links ul{
+
+list-style:none;
+padding:0;
+
+}
+
+.footer-links li{
+
+margin-bottom:8px;
+
+}
+
+.footer-links a{
+
+text-decoration:none;
+color:#444;
+font-size:14px;
+transition:.2s;
+
+}
+
+.footer-links a:hover{
+
+color:#e11d2e;
+
+}
+
+.social-icons{
+display:flex;
+gap:14px;
+margin-top:10px;
+}
+
+.social-icons a{
+
+width:42px;
+height:42px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#fff;
+
+border-radius:50%;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+
+color:#333;
+
+transition:.3s;
+
+}
+
+.social-icons a svg{
+width:20px;
+height:20px;
+}
+
+.social-icons a:hover{
+
+transform:translateY(-4px);
+
+color:#fff;
+
+background:linear-gradient(90deg,#e11d2e,#ff7a00);
+
+}
+
+/* BOTTOM */
+
+.footer-bottom{
+
+text-align:center;
+
+margin-top:40px;
+
+padding-top:18px;
+
+border-top:1px solid #eee;
+
+font-size:14px;
+color:#777;
+
+}
+
+.event-section{
+
+padding:80px 20px;
+
+background:
+radial-gradient(circle at 20% 30%, rgba(255,120,120,0.12), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(255,160,0,0.12), transparent 40%),
+linear-gradient(180deg,#ffffff,#f7f7f7);
+
+}
+
+.event-container{
+
+max-width:1100px;
+margin:auto;
+text-align:center;
+
+}
+
+.event-title{
+
+font-size:34px;
+font-weight:700;
+margin-bottom:15px;
+
+}
+
+.event-subtitle{
+
+max-width:650px;
+margin:auto;
+color:#666;
+margin-bottom:45px;
+font-size:16px;
+
+}
+
+.event-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+
+}
+
+.event-card{
+
+background:#fff;
+padding:30px;
+
+border-radius:14px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+
+transition:0.3s;
+
+}
+
+.event-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.event-card h3{
+
+margin-bottom:10px;
+font-size:20px;
+
+}
+
+.event-card p{
+
+color:#666;
+font-size:14px;
+line-height:1.6;
+
+}
+
+.initiative-section{
+
+padding:80px 20px;
+
+background:
+radial-gradient(circle at 15% 25%, rgba(255,120,120,0.12), transparent 40%),
+radial-gradient(circle at 85% 70%, rgba(255,160,0,0.12), transparent 40%),
+linear-gradient(180deg,#ffffff,#f6f6f6);
+
+}
+
+.initiative-container{
+
+max-width:1100px;
+margin:auto;
+
+}
+
+.initiative-title{
+
+text-align:center;
+font-size:34px;
+font-weight:700;
+margin-bottom:10px;
+
+}
+
+.initiative-subtitle{
+
+text-align:center;
+max-width:650px;
+margin:auto;
+color:#666;
+margin-bottom:50px;
+
+}
+
+.initiative-content{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+
+}
+
+.initiative-text h3{
+
+font-size:24px;
+margin-bottom:12px;
+
+}
+
+.initiative-text p{
+
+color:#666;
+line-height:1.6;
+margin-bottom:15px;
+
+}
+
+.initiative-highlight{
+
+display:grid;
+gap:18px;
+
+}
+
+.initiative-card{
+
+background:#fff;
+padding:22px;
+
+border-radius:12px;
+
+box-shadow:0 12px 30px rgba(0,0,0,0.08);
+
+transition:.3s;
+
+}
+
+.initiative-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.initiative-card h4{
+
+margin-bottom:6px;
+
+}
+
+.initiative-card p{
+
+font-size:14px;
+color:#666;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.initiative-content{
+
+grid-template-columns:1fr;
+
+}
+
+}
+.center-btn{
+text-align:center;
+margin-top:30px;
+}
+.visit-btn{
+
+display:inline-block;
+
+margin-top:20px;
+padding:12px 28px;
+
+font-size:15px;
+font-weight:600;
+
+color:#fff;
+text-decoration:none;
+
+border-radius:30px;
+
+background:linear-gradient(90deg,#e11d2e,#ff7a00);
+
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+transition:0.3s;
+
+}
+
+.visit-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 12px 28px rgba(0,0,0,0.2);
+
+}
 </style>
+
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-<div class="logo">COMING SOON</div>
-<div>
-<a href="#packages"></a>
-<a href="#initiative"></a>
-</div>
+<nav class="navbar">
+<div class="logo-rect"><img src="https://i.postimg.cc/QN0zj0NF/Picsart-26-03-15-09-59-36-602.jpg"></div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-<h1>Alpha Auron Pvt Ltd</h1>
-<p>
-A next-generation fintech ecosystem delivering trading education,
-evaluation environments, professional tools, and a global trader community.
-</p>
+<section class="hero">
+<h1>Predict the Net Worth of <span>ALPHA AURON</span></h1><br>
+<p>Participate in the Alpha Auron Prediction Event and put your prediction skills to the test. Use event coins to vote for the outcome you believe will happen and become eligible for exciting rewards. Join the community challenge and see if your prediction stands out.</p><br>
 
-<a href="#packages" class="btn">Explore Ecosystem</a>
+<button class="btn primary" onclick="scrollToPrediction()">SEASON 1 - START VOTING</button>
+
+
+</div>
+<!-- SOCIAL -->
+
+<div class="footer-social">
+
+<h3 style="text-align:center"><br><br></h3>
+<div class="social-icons">
+
+<a href="#" aria-label="Instagram">
+
+<svg viewBox="0 0 24 24" width="20">
+<path fill="currentColor"
+d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3zm6.2-.6a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
+</svg>
+
+</a>
+
+
+<a href="#" aria-label="X">
+
+<svg viewBox="0 0 24 24" width="20">
+<path fill="currentColor"
+d="M18 2h3l-7.5 8.6L22 22h-6.7l-5.2-6.8L4 22H1l8-9.1L2 2h6.8l4.7 6.2L18 2z"/>
+</svg>
+
+</a>
+
+
+<a href="#" aria-label="Telegram">
+
+<svg viewBox="0 0 24 24" width="20">
+<path fill="currentColor"
+d="M9.6 15.6 9.3 20c.4 0 .6-.2.8-.4l1.9-1.8 4 2.9c.7.4 1.2.2 1.4-.6l2.6-12.2c.3-1.1-.4-1.5-1.1-1.3L3.5 10.2c-1.1.4-1.1 1 0 1.4l4.1 1.3L17 6.7c.4-.2.7-.1.4.2"/>
+</svg>
+
+</a>
+
+
+<a href="#" aria-label="LinkedIn">
+
+<svg viewBox="0 0 24 24" width="20">
+<path fill="currentColor"
+d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-1 1.9-2.1 3.9-2.1 4.2 0 5 2.7 5 6.3V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/>
+</svg>
+
+</a>
+
 </div>
 
-<!-- PACKAGES -->
-<section id="packages">
-<h2 class="section-title">Alpha Auron Ecosystem</h2>
+
+</div>
+</section>
+
+<section class="timeline">
+
+<h2 class="timeline-title">SEASON 1 </h2>
+
+<h5 class="timeline-heading">TIMELINE</h5>
+
+<div class="timeline-box">
+
+<div class="timeline-row">
+<span>VOTING CLOSES</span>
+<span>25 May 2026</span>
+</div>
+
+<div class="countdown-box">
+
+<div class="time">
+<span id="days">0</span>
+<p>Days</p>
+</div>
+
+<div class="time">
+<span id="hours">0</span>
+<p>Hours</p>
+</div>
+
+<div class="time">
+<span id="minutes">0</span>
+<p>Minutes</p>
+</div>
+
+<div class="time">
+<span id="seconds">0</span>
+<p>Seconds</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="why">
+
+<h2 class="why-title">WHY PARTICIPATE</h2>
+
+<h1 class="why-heading">  PREDICTION EVENT </h1>
+
+<div class="why-grid">
+
+<div class="why-card">
+<h3>Win Exciting Rewards</h3>
+<p>Participants who make accurate predictions can win valuable prizes and recognition.</p>
+</div>
+
+<div class="why-card">
+<h3>Test Your Financial Insight</h3>
+<p>Challenge yourself by predicting the future net worth and test your analytical skills.</p>
+</div>
+
+<div class="why-card">
+<h3>Community Competition</h3>
+<p>Compete with other participants and see how your prediction ranks in the community.</p>
+</div>
+
+<div class="why-card">
+<h3>Simple & Transparent</h3>
+<p>The voting system is secure, transparent, and designed to ensure fairness.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="rewards">
+
+<h2 class="reward-title">SEASON 1 </h2>
+
+<h5 class="reward-heading">REWARDS</h5>
+
+<div class="reward-box">
+
+<div class="reward-icon">🥇</div>
+
+<div>
+<h3>1ST PLACE</h3>
+<div class="reward-price">₹2,00,000</div>
+</div>
+
+</div>
+
+<div class="reward-box">
+
+<div class="reward-icon">🥈</div>
+
+<div>
+<h3>2ND PLACE</h3>
+<div class="reward-price">₹1,50,000</div>
+</div>
+
+
+</div>
+
+<div class="reward-box">
+
+<div class="reward-icon">🥉</div>
+
+<div>
+<h3>3RD PLACE</h3>
+<div class="reward-price">₹1,00,000</div>
+</div>
+</div>
+
+</section>
+
+<section>
+
+<h2 style="text-align:center">HOW IT WORKS</h2>
 
 <div class="grid">
 
-<div class="card">
-<h3>Alpha Auron Nexus</h3>
+<div class="vote-card">
+<h3>1. Choose Prediction</h3>
+<p>Select your predicted net worth range.</p>
+</div>
+
+<div class="vote-card">
+<h3>2. Select Coin</h3>
+<p>Choose your voting coin tier.</p>
+</div>
+
+<div class="vote-card">
+<h3>3. Buy Votes</h3>
+<p>Enter votes and complete payment.</p>
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+<section class="event-section">
+
+<div class="event-container">
+
+<h2 class="event-title">ABOUT THE EVENT</h2>
+
+<p class="event-subtitle">
+The Alpha Auron Prediction Event is a unique community challenge where participants vote on the future net worth range and compete for exciting rewards.
+</p>
+
+<div class="event-grid">
+
+<div class="event-card">
+<h3>Predict the Future</h3>
 <p>
-Evaluation-based simulated funded trading environment designed
-to help traders develop discipline and performance skills.
+Participants vote for the predicted future net worth range. The closest prediction wins exciting prizes.
 </p>
 </div>
 
-<div class="card">
+<div class="event-card">
+<h3>Community Driven</h3>
+<p>
+This event is powered by the Alpha Auron community where everyone can participate and compete together.
+</p>
+</div>
+
+<div class="event-card">
+<h3>Win Rewards</h3>
+<p>
+Top predictors will receive special rewards based on the accuracy of their predictions.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="prediction">
+
+<h2 style="text-align:center">SELECT PREDICTION</h2>
+
+<div class="vote-list">
+
+<div class="vote-pill" onclick="selectPrediction('Below $5M')">Below $5M</div>
+<div class="vote-pill" onclick="selectPrediction('$5M-$20M')">$5M – $20M</div>
+<div class="vote-pill" onclick="selectPrediction('$20M-$50M')">$20M – $50M</div>
+<div class="vote-pill" onclick="selectPrediction('$50M-$100M')">$50M – $100M</div>
+<div class="vote-pill" onclick="selectPrediction('Above $100M')">Above $100M</div>
+
+</div>
+</section>
+
+<section id="coins" style="display:none">
+<h2 style="text-align:center">SELECT COIN</h2>
+
+<div class="grid">
+
+<div class="vote-card" onclick="selectCoin('Aurix Coin',100)">
+
+
+
+<div class="coin-frame">
+<img src="https://i.postimg.cc/sDf0w1df/Picsart-26-03-15-22-52-54-161.png" class="coin-img">
+</div>
+
+<h3>AURIX COIN</h3><br>
+
+<p class="coin-desc">Basic participation coin for event voting.
+Ideal for casual participants who want to join the prediction challenge.</p><br>
+<div class="price">₹100</div>
+</div>
+
+<div class="vote-card" onclick="selectCoin('Predix Coin',500)">
+<img src="https://i.postimg.cc/3r1vCxFm/Picsart-26-03-15-22-54-43-175.png" class="coin-img">
+<h3>PREDIX COIN</h3><br>
+<p class="coin-desc">Enhanced participation coin providing higher voting weight compared to Regular Coins.
+Recommended for participants with stronger prediction confidence.</p><br>
+<div class="price">₹500</div>
+</div>
+
+
+<div class="vote-card" onclick="selectCoin('Winix Coin',1000)">
+<img src="https://i.postimg.cc/V6MFkQxN/Picsart-26-03-15-22-55-44-496.png" class="coin-img">
+<h3>WINIX COIN</h3><br>
+<p class="coin-desc">Highest participation coin designed for advanced participants.
+Premium Coins provide greater participation weight and higher potential reward eligibility.</p><br>
+<div class="price">₹1000</div>
+</div>
+
+</div>
+</section>
+
+<section id="votes" style="display:none">
+<h2 style="text-align:center">ENTER VOTES</h2>
+
+<div class="calculator">
+
+<input type="number" id="voteCount" value="1" oninput="calculate()">
+
+<h3 style="text-align:center" > <br>TOTAL COST</h3><br><br>
+
+<div id="total" class="total">₹0</div>
+
+<button id="buyBtn" class="btn primary" onclick="openModal()" disabled>BUY VOTES</button>
+
+</div>
+</section>
+
+<div class="modal" id="userModal">
+
+<div class="modal-box">
+
+<div class="close-btn" onclick="closeModal()">❌</div>
+
+<h3>YOUR DETAILS </h3>
+
+<input type="text" id="name" placeholder="Name">
+<input type="email" id="email" placeholder="Email">
+<input type="text" id="city" placeholder="City">
+
+<input type="text" id="selectedPrediction" placeholder="Prediction" readonly>
+
+<input type="text" id="selectedVotes" placeholder="Votes" readonly>
+
+<button class="btn primary" style="width:100%" onclick="startPayment()">VOTE NOW</button>
+
+</div>
+</div>
+<div class="success-popup" id="successPopup">
+
+<div class="success-box">
+
+<div class="success-icon">✔</div>
+
+<h2>Vote Recorded!</h2>
+
+<p>Your payment was successful and vote recorded.</p>
+
+<button class="btn primary" onclick="closeSuccess()">Close</button>
+
+</div>
+
+</div>
+
+<section class="stats">
+
+<h2 class="stats-title">COMMUNITY ACTIVITY</h2>
+
+<h1 class="stats-heading">LIVE PLATFORM STATS</h1>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2 id="votesCount">0</h2>
+<p>Total Votes Cast</p>
+</div>
+
+<div class="stat-card">
+<h2 id="participantsCount">0</h2>
+<p>Total Participants</p>
+</div>
+
+<div class="stat-card">
+<h2 id="prizePool">₹0</h2>
+<p>Total Prize Pool</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="rules">
+
+<h2 class="rules-title">VOTING RULES</h2>
+
+<h1 class="rules-heading">GUIDELINES</h1>
+
+<div class="rules-box">
+
+<div class="rule-item">
+<h3>1. Community Voting</h3>
+<p>Users can vote by purchasing community coins and selecting their prediction.</p>
+</div>
+
+<div class="rule-item">
+<h3>2. Multiple Votes Allowed</h3>
+<p>Participants may vote multiple times by purchasing additional coins.</p>
+</div>
+
+<div class="rule-item">
+<h3>3. Fair Selection</h3>
+<p>Winners will be determined based on the closest prediction to the final net worth.</p>
+</div>
+
+<div class="rule-item">
+<h3>4. Result Declaration</h3>
+<p>Results will be officially announced on the result reveal date mentioned in the timeline.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="leaderboard">
+
+<h2 class="leaderboard-title">TOP PREDICTIONS</h2>
+
+<h1 class="leaderboard-heading"> LEADERBOARD</h1>
+
+<div class="leaderboard-box">
+
+<div class="leader-row">
+<span>🥇 ₹ 20M – ₹ 50M</span>
+<span>27 Votes</span>
+</div>
+
+<div class="leader-row">
+<span>🥈 ₹ 50M – ₹ 100M</span>
+<span>12 Votes</span>
+</div>
+
+<div class="leader-row">
+<span>🥉 ₹ 5M – ₹ 20M </span>
+<span>64 Votes</span>
+</div>
+
+<div class="leader-row">
+<span>🏅 Below ₹ 5M</span>
+<span>14 Votes</span>
+</div>
+ 
+<div class="leader-row">
+<span>🎖 Above ₹ 100M</span>
+<span>0 Votes</span>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="about">
+
+<h2 class="about-title">ABOUT ALPHA AURON</h2>
+
+<h1 class="about-heading">The Vision Behind Alpha Auron</h1>
+
+<div class="about-container">
+
+<div class="about-text">
+
+<p style="text-align:center">
+Alpha Auron is a fintech-focused trading ecosystem dedicated to empowering individuals with the knowledge, tools, and practical environments needed to develop strong trading skills. Our platform integrates education, simulated trading opportunities, advanced analytics, and community-driven learning to support individuals interested in financial markets.
+</p>
+
+
+
+<p style="text-align:center" > Alpha Auron operates through multiple specialized divisions designed to serve different aspects of the trading journey.
+</p>
+
+</div>
+
+<div class="about-highlights">
+
+<div class="about-card">
 <h3>Alpha Auron Academy</h3>
-<p>
-Structured trading education programs, mentorship sessions,
-and professional learning pathways for traders.
-</p>
+<p>Provides structured trading education programs, professional learning pathways, and mentorship opportunities.</p>
 </div>
 
-<div class="card">
+<div class="about-card">
+<h3>Alpha Auron Nexus</h3>
+<p>Offers evaluation-based simulated funded account programs designed to assess trading skills and discipline.</p>
+</div>
+
+<div class="about-card">
 <h3>Alpha Auron Labs</h3>
-<p>
-Research and development division focused on indicators,
-analytics tools, and innovative trading solutions.
-</p>
+<p>Focused on research and development of trading indicators, strategies, and analytical tools.</p>
 </div>
 
-<div class="card">
+<div class="about-card">
 <h3>Alpha Auron Pro</h3>
-<p>
-Premium services including advanced analytics,
-exclusive insights, and professional trader resources.
-</p>
+<p>Provides premium services including advanced analytics, mentorship, and professional trader resources.</p>
 </div>
 
-<div class="card">
+<div class="about-card">
 <h3>Alpha Auron Community</h3>
+<p>A collaborative platform connecting traders through discussions, events, and knowledge sharing.</p>
+</div>
+
 <p>
-Collaborative ecosystem connecting traders worldwide
-through discussions, events, and shared learning.
+Our mission is to empower aspiring traders and investors by providing structured learning programs, evaluation-based simulated funded trading environments, and professional trading resources. We aim to help individuals develop disciplined trading practices and build a deeper understanding of financial markets.
 </p>
+
+<p>
+Our vision is to build a globally recognized trading education and evaluation ecosystem that bridges the gap between theoretical knowledge and real-world market experience through technology-driven platforms and community collaboration.</p>
+
 </div>
 
 </div>
+
+</section>
+<section class="faq">
+
+<h2 class="faq-title">FREQUENTLY ASKED </h2>
+
+<h1 class="faq-heading">QUESTIONS</h1>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<h3>How does voting work?</h3>
+<p>Users purchase community coins and use them to vote for their predicted net worth range.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I vote multiple times?</h3>
+<p>Yes. You can purchase more coins and vote multiple times to increase your chances.</p>
+</div>
+
+<div class="faq-item">
+<h3>How are winners selected?</h3>
+<p>Participants who correctly predict the closest net worth range will be eligible for the rewards.</p>
+</div>
+
+<div class="faq-item">
+<h3>When will the results be announced?</h3>
+<p>Results will be revealed on the official result date mentioned in the timeline section.</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- INITIATIVE -->
-<section id="initiative" class="initiative">
-<h2 class="section-title">An Initiative of THE KGV GROUP</h2>
+<section class="initiative-section">
 
-<p>
-Alpha Auron Pvt Ltd is an initiative of <strong>THE KGV GROUP
-(Krish Global Ventures)</strong>, focused on building innovative
-digital and financial ecosystems.
+<div class="initiative-container">
+
+<h2 class="initiative-title">PARENT INITIATIVE</h2><br>
+
+<p class="initiative-subtitle">
+Alpha Auron Pvt Ltd is an initiative of THE KGV GROUP (Krish Global Ventures), focused on developing innovative digital ecosystems and empowering individuals through technology-driven platforms.
 </p>
 
-<a class="link-btn" href="https://krishglobalventures.org" target="_blank">
-Visit Krish Global Ventures →
+
+
+
+
+</div>
+
+<div class="center-btn">
+
+<a href="https://krishglobalventures.org" class="visit-btn" target="_blank">
+Visit Site
+
+<svg width="16" viewBox="0 0 24 24" style="margin-left:6px;">
+<path fill="white"
+d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"/>
+<path fill="white"
+d="M5 5h6v2H7v10h10v-4h2v6H5z"/>
+</svg>
+
 </a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- FOOTER -->
-<footer>
-© 2026 Alpha Auron Pvt Ltd — All Rights Reserved
+<footer class="site-footer">
+
+<div class="footer-container">
+
+<!-- LOGO & ABOUT -->
+
+<div class="footer-brand">
+
+<div class="footer-logo">
+<img src="https://i.postimg.cc/QN0zj0NF/Picsart-26-03-15-09-59-36-602.jpg">
+</div>
+
+<p>Alpha Auron Prediction Event is a community engagement activity and is not financial or investment advice and it
+is a community-driven prediction platform where participants vote on the future net worth range and compete for exciting rewards.
+</p>
+
+</div>
+
+
+
+
+
+
+<!-- CONTACT -->
+
+<div class="footer-contact">
+<h3>CONTACT</h3>
+
+<p>contact@alphaauron.com</p>
+<p>Bangalore, India</p>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="footer-bottom">
+
+<p>© 2026 Alpha Auron Pvt Ltd. All Rights Reserved.</p>
+
+</div>
+
 </footer>
+
+<script>
+
+emailjs.init("S6DfVf9hM1FLGb_0V")
+
+let prediction=""
+let coin=""
+let price=0
+
+function scrollToPrediction(){
+document.getElementById("prediction").scrollIntoView({behavior:"smooth"})
+}
+
+function selectPrediction(p){
+prediction=p
+document.getElementById("coins").style.display="block"
+document.getElementById("coins").scrollIntoView({behavior:"smooth"})
+}
+
+function selectCoin(c,p){
+coin=c
+price=p
+document.getElementById("votes").style.display="block"
+calculate()
+document.getElementById("votes").scrollIntoView({behavior:"smooth"})
+document.getElementById("buyBtn").disabled=false
+}
+
+function calculate(){
+let v=parseInt(document.getElementById("voteCount").value)||1
+let total=v*price
+document.getElementById("total").innerText="₹"+total
+}
+
+function openModal(){
+
+if(!prediction||!coin){
+alert("Please select prediction and coin first")
+return
+}
+
+let votes=document.getElementById("voteCount").value
+
+document.getElementById("selectedPrediction").value=prediction
+document.getElementById("selectedVotes").value=votes
+
+document.getElementById("userModal").style.display="flex"
+
+}
+
+function closeModal(){
+document.getElementById("userModal").style.display="none"
+}
+
+function startPayment(){
+
+let name=document.getElementById("name").value
+let email=document.getElementById("email").value
+let city=document.getElementById("city").value
+let votes=parseInt(document.getElementById("voteCount").value)
+
+if(!name||!email||!city){
+alert("Please fill all details")
+return
+}
+
+let amount=votes*price*100
+
+var options={
+key:"rzp_live_LQdczFva8o4hOr",
+amount:amount,
+currency:"INR",
+name:"Alpha Auron",
+description:"Community Vote",
+prefill:{name:name,email:email},
+
+handler:function(response){
+
+emailjs.send(
+"service_uqjv41o",
+"template_7120t9l",
+{
+user_name:name,
+user_email:email,
+city:city,
+prediction:prediction,
+coin:coin,
+votes:votes,
+amount:amount/100,
+payment_id:response.razorpay_payment_id
+})
+
+alert("Payment Successful! Vote Recorded")
+closeModal()
+
+}
+
+}
+
+var rzp=new Razorpay(options)
+rzp.open()
+
+}
+
+function showSuccess(){
+
+document.getElementById("successPopup").style.display="flex"
+
+confetti({
+particleCount:120,
+spread:90,
+origin:{y:0.6}
+})
+
+}
+
+function closeSuccess(){
+document.getElementById("successPopup").style.display="none"
+}
+
+</script>
+
+<script>
+// COUNTDOWN TIMER
+
+const targetDate = new Date("May 25, 2026 23:59:59").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+const distance = targetDate - now;
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("days").innerText = days;
+document.getElementById("hours").innerText = hours;
+document.getElementById("minutes").innerText = minutes;
+document.getElementById("seconds").innerText = seconds;
+
+},1000);
+</script>
+
+<script>// LIVE STATS COUNTER
+
+function animateValue(id,start,end,duration){
+
+let range=end-start
+let current=start
+let increment=end>start?1:-1
+let stepTime=Math.abs(Math.floor(duration/range))
+
+let obj=document.getElementById(id)
+
+let timer=setInterval(function(){
+
+current+=increment
+obj.innerText=current.toLocaleString()
+
+if(current==end){
+clearInterval(timer)
+}
+
+},stepTime)
+
+}
+
+animateValue("votesCount",0,117,2000)
+animateValue("participantsCount",0,32,2000)
+
+let prize=200000
+document.getElementById("prizePool").innerText="₹"+prize.toLocaleString()</script>
 
 </body>
 </html>
