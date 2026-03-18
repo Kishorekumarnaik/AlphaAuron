@@ -1335,6 +1335,96 @@ transform:translateY(-3px);
 box-shadow:0 12px 28px rgba(0,0,0,0.2);
 
 }
+
+ /* HOW IT WORKS */
+
+.how-it-works{
+padding:80px 7%;
+text-align:center;
+background:#fff;
+}
+
+.how-title{
+font-size:20px;
+letter-spacing:3px;
+color:#777;
+text-transform:uppercase;
+margin-bottom:10px;
+}
+
+.how-heading{
+font-size:40px;
+font-weight:800;
+margin-bottom:50px;
+}
+
+/* Steps Layout */
+
+.steps{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+/* Step Card */
+
+.step-box{
+width:240px;
+padding:25px;
+border-radius:18px;
+background:#fff;
+border:1px solid #eee;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.step-box:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Step Number */
+
+.step-icon{
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 15px;
+
+background:linear-gradient(135deg,#e11d2e,#ff7a00);
+color:#fff;
+font-weight:bold;
+font-size:18px;
+}
+
+/* Text */
+
+.step-box h3{
+font-size:18px;
+margin-bottom:8px;
+color:#222;
+}
+
+.step-box p{
+font-size:13px;
+color:#666;
+line-height:1.5;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+.how-heading{
+font-size:30px;
+}
+.step-box{
+width:100%;
+}
+}
 </style>
 
 
@@ -1542,6 +1632,44 @@ d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-
 
 </section>
 
+ <section class="how-it-works">
+
+  <h2 class="how-title">HOW IT WORKS</h2>
+  <h1 class="how-heading">Simple Steps to Participate</h1>
+
+  <div class="steps">
+
+    <!-- Step 1 -->
+    <div class="step-box">
+      <div class="step-icon">1</div>
+      <h3>Register for the Event</h3>
+      <p>Create your account and secure your spot for the Financial Growth Event.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-box">
+      <div class="step-icon">2</div>
+      <h3>Choose Your Ticket</h3>
+      <p>Select from General, Moderate, or VIP tickets based on your preference.</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-box">
+      <div class="step-icon">3</div>
+      <h3>Participate in Activities</h3>
+      <p>Engage in event challenges and interactive sessions designed for learning and growth.</p>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-box">
+      <div class="step-icon">4</div>
+      <h3>Earn Rewards & Benefits</h3>
+      <p>Get rewards, recognition, and exclusive benefits based on your participation.</p>
+    </div>
+
+  </div>
+
+ </section>
 <section>
 
 <h2 style="text-align:center">HOW IT WORKS</h2>
