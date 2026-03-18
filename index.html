@@ -1662,6 +1662,107 @@ width:100%;
   font-size:13px;
   color:#777;
 }
+
+
+ /* HERO SECTION */
+
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 7%;
+
+  background:
+  radial-gradient(circle at 20% 30%,rgba(255,80,80,0.15),transparent 40%),
+  radial-gradient(circle at 80% 70%,rgba(255,140,0,0.15),transparent 40%),
+  linear-gradient(135deg,#0f172a,#1e293b);
+  
+  color:#fff;
+}
+
+.hero-content{
+  max-width:750px;
+}
+
+.hero h1{
+  font-size:48px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.hero h2{
+  font-size:22px;
+  font-weight:500;
+  color:#facc15;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:16px;
+  color:#d1d5db;
+  line-height:1.6;
+  margin-bottom:30px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+.hero-btn{
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:14px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+/* Primary Button */
+.hero-btn.primary{
+  background:linear-gradient(90deg,#e11d2e,#ff7a00);
+  color:#fff;
+}
+
+.hero-btn.primary:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(255,80,0,0.4);
+}
+
+/* Secondary Button */
+.hero-btn.secondary{
+  border:1px solid #fff;
+  color:#fff;
+}
+
+.hero-btn.secondary:hover{
+  background:#fff;
+  color:#000;
+}
+
+.hero-note{
+  font-size:13px;
+  color:#9ca3af;
+  margin-top:10px;
+}
+
+@media(max-width:768px){
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero h2{
+    font-size:18px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+}
 </style>
 
 
@@ -1672,6 +1773,33 @@ width:100%;
 <nav class="navbar">
 <div class="logo-rect"><img src="https://i.postimg.cc/QN0zj0NF/Picsart-26-03-15-09-59-36-602.jpg"></div>
 </nav>
+
+ <!-- HERO SECTION -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Join the Financial Growth Event</h1>
+    <h2>May 29, 2026</h2>
+
+    <p>
+      Be part of a powerful community experience focused on 
+      <b>financial awareness, smart decision-making, and real-world learning</b>.
+      Participate in interactive challenges and unlock rewards based on your performance.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#tickets" class="hero-btn primary">Secure Your Spot</a>
+      <a href="#about" class="hero-btn secondary">Learn More</a>
+    </div>
+
+    <p class="hero-note">
+      Limited entries available • Ticket-based access only
+    </p>
+
+  </div>
+
+</section>
 
 <section class="hero">
 <h1> Join the Financial Growth Event   <span>on MAY 29</span></h1><br>
