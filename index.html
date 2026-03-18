@@ -1595,6 +1595,73 @@ width:100%;
 }
 
 }
+
+ /* LEADERBOARD */
+
+.leaderboard{
+  padding:80px 7%;
+  text-align:center;
+  background:
+  radial-gradient(circle at 20% 30%,rgba(0,150,255,0.08),transparent 40%),
+  radial-gradient(circle at 80% 70%,rgba(255,120,0,0.08),transparent 40%),
+  linear-gradient(180deg,#ffffff,#f9fafb);
+}
+
+.lb-title{
+  font-size:14px;
+  letter-spacing:2px;
+  color:#666;
+  margin-bottom:10px;
+}
+
+.lb-heading{
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:40px;
+}
+
+.lb-card{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px;
+  border-radius:18px;
+  margin:15px auto;
+  max-width:600px;
+  background:#fff;
+  border:1px solid #eee;
+  box-shadow:0 10px 25px rgba(0,0,0,0.07);
+  transition:.3s;
+}
+
+.lb-card:hover{
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:0 18px 35px rgba(0,0,0,0.12);
+}
+
+.lb-icon{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  background:linear-gradient(90deg,#0ea5e9,#6366f1);
+  color:#fff;
+}
+
+.lb-count{
+  font-size:16px;
+  color:#555;
+  margin-top:5px;
+}
+
+.lb-note{
+  margin-top:30px;
+  font-size:13px;
+  color:#777;
+}
 </style>
 
 
@@ -2088,6 +2155,58 @@ d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-
 </div>
 
 </div>
+
+</section>
+
+ <!-- LEADERBOARD SECTION -->
+<section class="leaderboard">
+
+  <h4 class="lb-title">TOP PERFORMERS</h4>
+  <h2 class="lb-heading">LEADERBOARD</h2>
+
+  <div class="lb-card">
+    <div class="lb-icon">🥇</div>
+    <div>
+      <h3>Elite Performance Tier</h3>
+      <p class="lb-count">27 Participants</p>
+    </div>
+  </div>
+
+  <div class="lb-card">
+    <div class="lb-icon">🥈</div>
+    <div>
+      <h3>Pro Performance Tier</h3>
+      <p class="lb-count">12 Participants</p>
+    </div>
+  </div>
+
+  <div class="lb-card">
+    <div class="lb-icon">🥉</div>
+    <div>
+      <h3>Growth Performance Tier</h3>
+      <p class="lb-count">64 Participants</p>
+    </div>
+  </div>
+
+  <div class="lb-card">
+    <div class="lb-icon">🏅</div>
+    <div>
+      <h3>Basic Performance Tier</h3>
+      <p class="lb-count">14 Participants</p>
+    </div>
+  </div>
+
+  <div class="lb-card">
+    <div class="lb-icon">🎖</div>
+    <div>
+      <h3>Starter Performance Tier</h3>
+      <p class="lb-count">0 Participants</p>
+    </div>
+  </div>
+
+  <p class="lb-note">
+    Leaderboard is based on participant activity, engagement, and performance during the event.
+  </p>
 
 </section>
 
