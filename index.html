@@ -1676,47 +1676,68 @@ width:100%;
   transition:.3s;
  }
 
- 
-/* EVENT LOCATION SECTION */
-.event-location{
-  padding:80px 7%;
+ /* EVENT LOCATION SECTION */
+.event-location {
+  padding:100px 7%;
   text-align:center;
-  background:linear-gradient(180deg,#f9fafb,#ffffff);
+  background:linear-gradient(135deg,#fff5f0,#ffffff);
+  border-radius:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+  margin:50px auto;
+  max-width:1200px;
 }
 
-.location-content h2{
-  font-size:36px;
-  font-weight:700;
-  margin-bottom:15px;
-  color:#111;
-}
-
-.location-content h3{
-  font-size:24px;
+.location-content h2 {
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:20px;
   color:#e11d2e;
-  margin:10px 0 20px;
 }
 
-.location-content p{
-  font-size:16px;
+.location-content h3 {
+  font-size:28px;
+  font-weight:700;
+  margin:10px 0 20px;
+  color:#ff7a00;
+}
+
+.location-content p {
+  font-size:18px;
   color:#555;
-  max-width:700px;
+  max-width:750px;
   margin:10px auto;
   line-height:1.8;
 }
 
-.location-map{
-  margin-top:40px;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,0.1);
+.highlight-text {
+  font-weight:600;
+  font-size:18px;
+  background:linear-gradient(90deg,#e11d2e,#ff7a00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:10px;
 }
 
-.location-map iframe{
+.note {
+  font-size:16px;
+  color:#e11d2e;
+  font-weight:600;
+  margin-top:20px;
+}
+
+.location-map {
+  margin-top:50px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,0.12);
+}
+
+.location-map iframe {
   width:100%;
-  height:450px;
+  height:500px;
   border:0;
 }
+
 
 </style>
 
@@ -1842,25 +1863,26 @@ d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-
  <!-- EVENT LOCATION SECTION -->
 <section class="event-location">
   <div class="location-content">
-    <h2>Event Location</h2>
-    <p>The Financial Growth Event will be held at the vibrant heart of Bangalore:</p>
-    <h3>Koramangala, Bangalore, Karnataka, India</h3>
-    
-    <p><b>Note:</b> Please plan your travel and accommodation in advance to ensure a smooth experience.</p>
+    <h2>📍 Event Location</h2>
+    <p class="highlight-text">The Financial Growth Event will be held at our main branch:</p>
+    <h3>ALPHA AURON PVT LTD</h3>
+    <p class="highlight-text">Koramangala, Bangalore, Karnataka, India</p>
+    <p>
+      Join us at this prime location for an <b>immersive experience</b> filled with interactive sessions, networking opportunities, and exclusive rewards. 
+      Easily accessible and surrounded by amenities, Koramangala is the perfect place to <b>learn, engage, and grow</b> with like-minded participants.
+    </p>
+    <p class="note"><b>Note:</b> Please plan your travel and accommodation in advance to ensure a smooth experience.</p>
   </div>
 
   <!-- GOOGLE MAP -->
   <div class="location-map">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.220567488523!2d77.61944171526337!3d12.93523379088472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1360f2f4e9b5%3A0x6e1cba6c1f3d7f2!2sKoramangala%2C%20Bangalore%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sin!4v1688500000000!5m2!1sen!2sin"
-      width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
- <p>
-      Join us at this prime location for an immersive experience filled with interactive sessions, networking opportunities, and exclusive rewards. 
-      Easily accessible and surrounded by amenities, Koramangala is the perfect place to learn, engage, and grow with like-minded participants.
- </p>
 </section>
+
  
 
  
