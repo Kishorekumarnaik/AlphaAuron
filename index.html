@@ -1425,6 +1425,78 @@ font-size:30px;
 width:100%;
 }
 }
+
+ /* ABOUT EVENT */
+
+.about-event{
+padding:80px 7%;
+background:#fafafa;
+}
+
+.about-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+flex-wrap:wrap;
+}
+
+/* Text */
+
+.about-text{
+flex:1;
+min-width:280px;
+}
+
+.about-title{
+font-size:18px;
+letter-spacing:3px;
+color:#777;
+text-transform:uppercase;
+margin-bottom:10px;
+}
+
+.about-heading{
+font-size:38px;
+font-weight:800;
+margin-bottom:20px;
+color:#111;
+}
+
+.about-desc{
+font-size:14px;
+color:#555;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+/* Image */
+
+.about-image{
+flex:1;
+text-align:center;
+}
+
+.about-image img{
+max-width:100%;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.about-container{
+flex-direction:column;
+text-align:center;
+}
+
+.about-heading{
+font-size:30px;
+}
+
+ }
 </style>
 
 
@@ -1670,32 +1742,45 @@ d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-
   </div>
 
  </section>
-<section>
 
-<h2 style="text-align:center">HOW IT WORKS</h2>
+ <section class="about-event">
 
-<div class="grid">
+  <div class="about-container">
 
-<div class="vote-card">
-<h3>1. Choose Prediction</h3>
-<p>Select your predicted net worth range.</p>
-</div>
+    <!-- Left Content -->
+    <div class="about-text">
 
-<div class="vote-card">
-<h3>2. Select Coin</h3>
-<p>Choose your voting coin tier.</p>
-</div>
+      <h2 class="about-title">ABOUT THE EVENT</h2>
+      <h1 class="about-heading">Financial Growth Event – May 29</h1>
 
-<div class="vote-card">
-<h3>3. Buy Votes</h3>
-<p>Enter votes and complete payment.</p>
-</div>
+      <p class="about-desc">
+        The Financial Growth Event is a unique opportunity designed to help individuals
+        improve their financial awareness, decision-making, and strategic thinking
+        through engaging and interactive activities.
+      </p>
 
-</div>
+      <p class="about-desc">
+        Participants can choose from different ticket categories and take part in
+        structured event experiences, challenges, and learning sessions. Based on
+        participation and engagement, users will receive rewards, recognition,
+        and exclusive benefits.
+      </p>
 
-</section>
+      <p class="about-desc">
+        This event is focused on education, growth, and community engagement,
+        providing a safe and transparent platform for everyone to learn and benefit.
+      </p>
 
-</section>
+    </div>
+
+    <!-- Right Side (Optional Image) -->
+    <div class="about-image">
+      <img src="https://i.postimg.cc/3x3QzSGq/finance-event.png" alt="Event Image">
+    </div>
+
+  </div>
+
+ </section>
 
 <section class="event-section">
 
