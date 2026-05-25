@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Freelancer Levels - ALPHA AURON</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#fff;
+      color:#111;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 8%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:#fff;
+      border-bottom:1px solid #eee;
+    }
+
+    .logo h1{
+      font-size:30px;
+      font-weight:900;
+      color:#000;
+    }
+
+    .logo p{
+      color:#d10000;
+      font-size:12px;
+      letter-spacing:2px;
+      margin-top:2px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      font-weight:600;
+    }
+
+    .nav-links a:hover{
+      color:#d10000;
+    }
+
+    .nav-btn{
+      background:#d10000;
+      color:#fff;
+      border:none;
+      padding:12px 22px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .nav-btn:hover{
+      background:#000;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:30px;
+      cursor:pointer;
+      color:#d10000;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      min-height:75vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:150px 8% 80px;
+      background:linear-gradient(to right,#fff,#fff5f5);
+    }
+
+    .hero-content{
+      max-width:950px;
+    }
+
+    .hero p{
+      color:#d10000;
+      font-weight:700;
+      letter-spacing:2px;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:80px;
+      line-height:1.1;
+      margin-bottom:25px;
+      font-weight:900;
+    }
+
+    .hero h1 span{
+      color:#d10000;
+    }
+
+    .hero h3{
+      color:#444;
+      font-size:24px;
+      line-height:1.8;
+      font-weight:500;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title p{
+      color:#d10000;
+      font-weight:700;
+      letter-spacing:2px;
+      margin-bottom:15px;
+    }
+
+    .section-title h2{
+      font-size:60px;
+      font-weight:900;
+    }
+
+    /* LEVELS */
+
+    .levels{
+      padding:100px 8%;
+    }
+
+    .levels-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:35px;
+    }
+
+    .level-card{
+      background:#fff;
+      border:2px solid #eee;
+      border-radius:35px;
+      padding:45px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .level-card:hover{
+      transform:translateY(-10px);
+      border-color:#d10000;
+      box-shadow:0 10px 30px rgba(209,0,0,0.1);
+    }
+
+    .level-code{
+      display:inline-block;
+      background:#d10000;
+      color:#fff;
+      padding:12px 22px;
+      border-radius:14px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
+
+    .level-card h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .level-card p{
+      color:#666;
+      line-height:1.9;
+      margin-bottom:30px;
+      font-size:17px;
+    }
+
+    .features{
+      margin-bottom:35px;
+    }
+
+    .features li{
+      list-style:none;
+      margin-bottom:14px;
+      color:#333;
+      font-weight:500;
+    }
+
+    .level-btn{
+      width:100%;
+      padding:16px;
+      border:none;
+      background:#000;
+      color:#fff;
+      border-radius:15px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .level-btn:hover{
+      background:#d10000;
+    }
+
+    /* PROGRESSION */
+
+    .progression{
+      padding:100px 8%;
+      background:#000;
+      color:#fff;
+    }
+
+    .progress-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:25px;
+      margin-top:70px;
+    }
+
+    .progress-card{
+      background:#111;
+      border:1px solid #222;
+      border-radius:25px;
+      padding:35px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .progress-card:hover{
+      border-color:#d10000;
+      transform:translateY(-10px);
+    }
+
+    .progress-card h2{
+      color:#ff0000;
+      font-size:50px;
+      margin-bottom:15px;
+    }
+
+    .progress-card h3{
+      font-size:24px;
+      margin-bottom:15px;
+    }
+
+    .progress-card p{
+      color:#bbb;
+      line-height:1.8;
+    }
+
+    /* BENEFITS */
+
+    .benefits{
+      padding:100px 8%;
+      background:#fafafa;
+    }
+
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+    }
+
+    .benefit-card{
+      background:#fff;
+      border:2px solid #eee;
+      border-radius:25px;
+      padding:40px;
+      transition:0.4s;
+    }
+
+    .benefit-card:hover{
+      border-color:#d10000;
+      transform:translateY(-10px);
+      box-shadow:0 10px 25px rgba(209,0,0,0.08);
+    }
+
+    .benefit-card h2{
+      color:#d10000;
+      font-size:45px;
+      margin-bottom:20px;
+    }
+
+    .benefit-card h3{
+      font-size:28px;
+      margin-bottom:15px;
+    }
+
+    .benefit-card p{
+      color:#666;
+      line-height:1.9;
+    }
+
+    /* CTA */
+
+    .cta{
+      padding:120px 8%;
+      background:#d10000;
+      text-align:center;
+      color:#fff;
+    }
+
+    .cta h2{
+      font-size:60px;
+      margin-bottom:25px;
+      font-weight:900;
+    }
+
+    .cta p{
+      max-width:850px;
+      margin:auto;
+      line-height:1.9;
+      margin-bottom:40px;
+      font-size:18px;
+    }
+
+    .cta button{
+      background:#fff;
+      color:#000;
+      border:none;
+      padding:20px 40px;
+      border-radius:15px;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .cta button:hover{
+      background:#000;
+      color:#fff;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111;
+      color:#fff;
+      text-align:center;
+      padding:40px 8%;
+    }
+
+    footer p{
+      color:#bbb;
+      margin-top:10px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1100px){
+
+      .levels-grid{
+        grid-template-columns:1fr;
+      }
+
+      .progress-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .benefits-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        padding:18px 5%;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        left:-100%;
+        width:100%;
+        background:#fff;
+        flex-direction:column;
+        padding:30px;
+        transition:0.4s;
+        border-bottom:1px solid #eee;
+      }
+
+      .nav-links.active{
+        left:0;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .nav-btn{
+        display:none;
+      }
+
+      .hero{
+        padding:140px 5% 80px;
+      }
+
+      .hero h1{
+        font-size:50px;
+      }
+
+      .hero h3{
+        font-size:20px;
+      }
+
+      .section-title h2,
+      .cta h2{
+        font-size:40px;
+      }
+
+      .progress-grid,
+      .benefits-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      <h1>ALPHA AURON</h1>
+      <p>RULE THE MARKETS</p>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Freelancer Levels</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <button class="nav-btn">
+      Join Us
+    </button>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+      ☰
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p>ALPHA AURON FREELANCER SYSTEM</p>
+
+      <h1>
+        Growth Levels For <span>Modern Freelancers.</span>
+      </h1>
+
+      <h3>
+        Alpha Auron provides a structured freelancer hierarchy designed to
+        help members grow from beginner-level freelancers into leadership
+        professionals within the organization.
+      </h3>
+
+    </div>
+
+  </section>
+
+  <!-- LEVELS -->
+
+  <section class="levels">
+
+    <div class="section-title">
+
+      <p>FREELANCER HIERARCHY</p>
+
+      <h2>Freelancer Levels</h2>
+
+    </div>
+
+    <div class="levels-grid">
+
+      <!-- A-FLR -->
+
+      <div class="level-card">
+
+        <div class="level-code">A-FLR</div>
+
+        <h2>Freelancer</h2>
+
+        <p>
+          Entry-level freelancers who begin working on digital operations,
+          remote workflows, and beginner-friendly tasks.
+        </p>
+
+        <ul class="features">
+          <li>• Beginner Access</li>
+          <li>• Remote Opportunities</li>
+          <li>• Flexible Workflow</li>
+          <li>• Skill Development</li>
+        </ul>
+
+        <button class="level-btn">
+          Apply As A-FLR
+        </button>
+
+      </div>
+
+      <!-- A-VFL -->
+
+      <div class="level-card">
+
+        <div class="level-code">A-VFL</div>
+
+        <h2>Verified Freelancer</h2>
+
+        <p>
+          Verified freelancers gain increased trust, professional recognition,
+          and access to higher-value opportunities.
+        </p>
+
+        <ul class="features">
+          <li>• Verified Status</li>
+          <li>• Trusted Profile</li>
+          <li>• Premium Access</li>
+          <li>• Better Opportunities</li>
+        </ul>
+
+        <button class="level-btn">
+          Apply As A-VFL
+        </button>
+
+      </div>
+
+      <!-- A-PFL -->
+
+      <div class="level-card">
+
+        <div class="level-code">A-PFL</div>
+
+        <h2>Professional Freelancer</h2>
+
+        <p>
+          Professional freelancers manage premium projects, advanced workflows,
+          and high-level operational responsibilities.
+        </p>
+
+        <ul class="features">
+          <li>• Professional Recognition</li>
+          <li>• Premium Projects</li>
+          <li>• Advanced Operations</li>
+          <li>• Leadership Growth</li>
+        </ul>
+
+        <button class="level-btn">
+          Apply As A-PFL
+        </button>
+
+      </div>
+
+      <!-- A-SFL -->
+
+      <div class="level-card">
+
+        <div class="level-code">A-SFL</div>
+
+        <h2>Senior Freelancer</h2>
+
+        <p>
+          Senior freelancers become leadership members responsible for team
+          coordination, management systems, and operations.
+        </p>
+
+        <ul class="features">
+          <li>• Leadership Access</li>
+          <li>• Team Coordination</li>
+          <li>• Operational Control</li>
+          <li>• Executive-Level Systems</li>
+        </ul>
+
+        <button class="level-btn">
+          Apply As A-SFL
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROGRESSION -->
+
+  <section class="progression">
+
+    <div class="section-title">
+
+      <p>GROWTH PATH</p>
+
+      <h2>Career Progression</h2>
+
+    </div>
+
+    <div class="progress-grid">
+
+      <div class="progress-card">
+
+        <h2>01</h2>
+
+        <h3>Join</h3>
+
+        <p>
+          Start as an Alpha Auron freelancer and begin your remote journey.
+        </p>
+
+      </div>
+
+      <div class="progress-card">
+
+        <h2>02</h2>
+
+        <h3>Verify</h3>
+
+        <p>
+          Complete verification to unlock advanced access and opportunities.
+        </p>
+
+      </div>
+
+      <div class="progress-card">
+
+        <h2>03</h2>
+
+        <h3>Professionalize</h3>
+
+        <p>
+          Build expertise, consistency, and leadership capabilities.
+        </p>
+
+      </div>
+
+      <div class="progress-card">
+
+        <h2>04</h2>
+
+        <h3>Lead</h3>
+
+        <p>
+          Become a senior freelancer managing operations and workforce teams.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- BENEFITS -->
+
+  <section class="benefits">
+
+    <div class="section-title">
+
+      <p>WHY JOIN US</p>
+
+      <h2>Freelancer Benefits</h2>
+
+    </div>
+
+    <div class="benefits-grid">
+
+      <div class="benefit-card">
+
+        <h2>01</h2>
+
+        <h3>Remote Freedom</h3>
+
+        <p>
+          Work remotely from anywhere with flexible operational systems.
+        </p>
+
+      </div>
+
+      <div class="benefit-card">
+
+        <h2>02</h2>
+
+        <h3>Career Growth</h3>
+
+        <p>
+          Upgrade your level through performance and professional growth.
+        </p>
+
+      </div>
+
+      <div class="benefit-card">
+
+        <h2>03</h2>
+
+        <h3>Leadership Access</h3>
+
+        <p>
+          Unlock leadership opportunities and senior operational roles.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>
+      Become Freelancer At AlphaAuron Private Limited
+    </h2>
+
+    <p>
+      Join a growing digital workforce ecosystem and build your future with
+      Alpha Auron’s structured freelancer hierarchy.
+    </p>
+
+    <button>
+      Join Alpha Auron
+    </button>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>ALPHA AURON PRIVATE LIMITED</h2>
+
+    <p>
+      © 2026 ALPHA AURON. All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <!-- JS -->
+
+  <script>
+
+    function toggleMenu(){
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+  </script>
+
+</body>
+</html>
