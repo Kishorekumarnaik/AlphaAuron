@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact Us - ALPHA AURON</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#fff;
+      color:#111;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 8%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:#fff;
+      border-bottom:1px solid #eee;
+    }
+
+    .logo h1{
+      font-size:30px;
+      font-weight:900;
+      color:#000;
+    }
+
+    .logo p{
+      color:#d10000;
+      font-size:12px;
+      letter-spacing:2px;
+      margin-top:2px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      font-weight:600;
+    }
+
+    .nav-links a{
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#d10000;
+    }
+
+    .nav-btn{
+      background:#d10000;
+      color:#fff;
+      border:none;
+      padding:12px 22px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .nav-btn:hover{
+      background:#000;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:30px;
+      cursor:pointer;
+      color:#d10000;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      min-height:70vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:150px 8% 80px;
+      background:linear-gradient(to right,#fff,#fff5f5);
+    }
+
+    .hero-content{
+      max-width:950px;
+    }
+
+    .hero p{
+      color:#d10000;
+      font-weight:700;
+      letter-spacing:2px;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:80px;
+      line-height:1.1;
+      margin-bottom:25px;
+      font-weight:900;
+    }
+
+    .hero h1 span{
+      color:#d10000;
+    }
+
+    .hero h3{
+      color:#444;
+      font-size:24px;
+      line-height:1.8;
+      font-weight:500;
+    }
+
+    /* CONTACT SECTION */
+
+    .contact{
+      padding:100px 8%;
+    }
+
+    .contact-container{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:start;
+    }
+
+    /* LEFT */
+
+    .contact-info h2{
+      font-size:55px;
+      margin-bottom:25px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .contact-info h2 span{
+      color:#d10000;
+    }
+
+    .contact-info p{
+      color:#666;
+      line-height:1.9;
+      margin-bottom:40px;
+      font-size:18px;
+    }
+
+    .info-box{
+      background:#fafafa;
+      border:2px solid #eee;
+      padding:30px;
+      border-radius:25px;
+      margin-bottom:25px;
+      transition:0.4s;
+    }
+
+    .info-box:hover{
+      border-color:#d10000;
+      transform:translateY(-5px);
+    }
+
+    .info-box h3{
+      color:#d10000;
+      font-size:26px;
+      margin-bottom:12px;
+    }
+
+    .info-box p{
+      margin:0;
+      color:#555;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    /* RIGHT */
+
+    .contact-form{
+      background:#fff;
+      border:2px solid #eee;
+      border-radius:35px;
+      padding:50px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.03);
+    }
+
+    .contact-form h2{
+      font-size:40px;
+      margin-bottom:30px;
+      font-weight:900;
+    }
+
+    .input-box{
+      margin-bottom:25px;
+    }
+
+    .input-box label{
+      display:block;
+      margin-bottom:10px;
+      font-weight:700;
+      color:#222;
+    }
+
+    .input-box input,
+    .input-box textarea{
+      width:100%;
+      padding:18px;
+      border:2px solid #eee;
+      border-radius:15px;
+      outline:none;
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    .input-box input:focus,
+    .input-box textarea:focus{
+      border-color:#d10000;
+    }
+
+    textarea{
+      min-height:180px;
+      resize:none;
+    }
+
+    .submit-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      background:#d10000;
+      color:#fff;
+      border-radius:15px;
+      font-size:17px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .submit-btn:hover{
+      background:#000;
+    }
+
+    /* SOCIAL */
+
+    .social{
+      padding:100px 8%;
+      background:#000;
+      color:#fff;
+      text-align:center;
+    }
+
+    .social h2{
+      font-size:60px;
+      margin-bottom:25px;
+      font-weight:900;
+    }
+
+    .social p{
+      color:#bbb;
+      max-width:850px;
+      margin:auto;
+      line-height:1.9;
+      margin-bottom:50px;
+      font-size:18px;
+    }
+
+    .social-links{
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .social-links a{
+      padding:18px 35px;
+      border:1px solid #222;
+      background:#111;
+      border-radius:15px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .social-links a:hover{
+      background:#d10000;
+      border-color:#d10000;
+    }
+
+    /* CTA */
+
+    .cta{
+      padding:120px 8%;
+      background:#d10000;
+      text-align:center;
+      color:#fff;
+    }
+
+    .cta h2{
+      font-size:60px;
+      margin-bottom:25px;
+      font-weight:900;
+    }
+
+    .cta p{
+      max-width:850px;
+      margin:auto;
+      line-height:1.9;
+      margin-bottom:40px;
+      font-size:18px;
+    }
+
+    .cta button{
+      background:#fff;
+      color:#000;
+      border:none;
+      padding:20px 40px;
+      border-radius:15px;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .cta button:hover{
+      background:#000;
+      color:#fff;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111;
+      color:#fff;
+      text-align:center;
+      padding:40px 8%;
+    }
+
+    footer p{
+      color:#bbb;
+      margin-top:10px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1100px){
+
+      .contact-container{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        padding:18px 5%;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        left:-100%;
+        width:100%;
+        background:#fff;
+        flex-direction:column;
+        padding:30px;
+        transition:0.4s;
+        border-bottom:1px solid #eee;
+      }
+
+      .nav-links.active{
+        left:0;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .nav-btn{
+        display:none;
+      }
+
+      .hero{
+        padding:140px 5% 80px;
+      }
+
+      .hero h1{
+        font-size:50px;
+      }
+
+      .hero h3{
+        font-size:20px;
+      }
+
+      .contact-info h2,
+      .social h2,
+      .cta h2{
+        font-size:40px;
+      }
+
+      .contact-form{
+        padding:30px;
+      }
+
+      .social-links{
+        flex-direction:column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      <h1>ALPHA AURON</h1>
+      <p>RULE THE MARKETS</p>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Freelancer Levels</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <button class="nav-btn">
+      Join Us
+    </button>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+      ☰
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p>CONTACT ALPHA AURON</p>
+
+      <h1>
+        Let's Build The Future <span>Together.</span>
+      </h1>
+
+      <h3>
+        Connect with Alpha Auron Private Limited for freelancer opportunities,
+        business inquiries, partnerships, and workforce collaborations.
+      </h3>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact">
+
+    <div class="contact-container">
+
+      <!-- LEFT -->
+
+      <div class="contact-info">
+
+        <h2>
+          Get In Touch With <span>Alpha Auron.</span>
+        </h2>
+
+        <p>
+          We are building a modern digital freelancer ecosystem focused on
+          growth, leadership, remote operations, and innovation.
+        </p>
+
+        <div class="info-box">
+
+          <h3>Email Address</h3>
+
+          <p>
+            support@alphaauron.com
+          </p>
+
+        </div>
+
+        <div class="info-box">
+
+          <h3>Phone Number</h3>
+
+          <p>
+            +91 00000 00000
+          </p>
+
+        </div>
+
+        <div class="info-box">
+
+          <h3>Company Name</h3>
+
+          <p>
+            ALPHA AURON PRIVATE LIMITED
+          </p>
+
+        </div>
+
+        <div class="info-box">
+
+          <h3>Work Mode</h3>
+
+          <p>
+            Remote Operations • Digital Workforce • Freelancer Ecosystem
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="contact-form">
+
+        <h2>Send Message</h2>
+
+        <form>
+
+          <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name">
+          </div>
+
+          <div class="input-box">
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email">
+          </div>
+
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="text" placeholder="Enter your phone number">
+          </div>
+
+          <div class="input-box">
+            <label>Your Message</label>
+            <textarea placeholder="Write your message..."></textarea>
+          </div>
+
+          <button class="submit-btn">
+            Send Message
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SOCIAL -->
+
+  <section class="social">
+
+    <h2>
+      Connect With Alpha Auron
+    </h2>
+
+    <p>
+      Follow Alpha Auron on social platforms and stay connected with our
+      growing digital freelancer ecosystem and operational updates.
+    </p>
+
+    <div class="social-links">
+
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Telegram</a>
+      <a href="#">YouTube</a>
+      <a href="#">WhatsApp</a>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>
+      Become Freelancer At AlphaAuron Private Limited
+    </h2>
+
+    <p>
+      Join a next-generation freelancer ecosystem designed for growth,
+      leadership, remote work, and digital opportunities.
+    </p>
+
+    <button>
+      Join Alpha Auron
+    </button>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>ALPHA AURON PRIVATE LIMITED</h2>
+
+    <p>
+      © 2026 ALPHA AURON. All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <!-- JS -->
+
+  <script>
+
+    function toggleMenu(){
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+  </script>
+
+</body>
+</html>
