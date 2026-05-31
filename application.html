@@ -335,57 +335,31 @@ to{transform:scale(1);opacity:1;}
 <button onclick="closePopup()">OK</button>
 </div>
 </div>
-
 <script>
+  emailjs.init("0EXFtV9KEAiw-Qwyg");
 
+document.getElementById("applicationForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-emailjs.init({
-  publicKey: "0EXFtV9KEAiw-Qwyg"
+  const btn = document.querySelector(".submit-btn");
+  btn.innerHTML = "Submitting...";
+  btn.disabled = true;
+
+  emailjs.sendForm("service_4mwj0qs", "template_9w8a07k", this)
+    .then((res) => {
+      console.log("SUCCESS:", res);
+      alert("SUCCESS (EmailJS worked)");
+      this.reset();
+      btn.innerHTML = "Submit Application";
+      btn.disabled = false;
+    })
+    .catch((err) => {
+      console.log("FULL ERROR:", err);
+      alert("FAILED: " + JSON.stringify(err));
+      btn.innerHTML = "Submit Application";
+      btn.disabled = false;
+    });
 });
-  
-const form = document.getElementById("applicationForm");
-const btn = document.querySelector(".submit-btn");
-const popup = document.getElementById("popup");
-
-form.addEventListener("submit", function(e){
-e.preventDefault();
-
-btn.innerHTML = "Submitting...";
-btn.disabled = true;
-
-emailjs.sendForm(
-"service_4mwj0qs",
-"template_9w8a07k",
-this
-)
-.then(() => {
-
-popup.style.display = "flex";
-
-form.reset();
-
-btn.innerHTML = "Submit Application";
-btn.disabled = false;
-
-})
-
-  .catch((err) => {
-console.log("EMAILJS FULL ERROR:", err);
-alert("Submission Failed: " + JSON.stringify(err));
-});
-  
-btn.innerHTML = "Submit Application";
-btn.disabled = false;
-
-});
-
-});
-
-function closePopup(){
-popup.style.display = "none";
-}
-
 </script>
-
 </body>
 </html>
