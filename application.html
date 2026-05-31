@@ -368,11 +368,12 @@ btn.innerHTML = "Submit Application";
 btn.disabled = false;
 
 })
-.catch((err) => {
 
-alert("Submission Failed!");
-console.log(err);
-
+  .catch((err) => {
+console.log("EMAILJS FULL ERROR:", err);
+alert("Submission Failed: " + JSON.stringify(err));
+});
+  
 btn.innerHTML = "Submit Application";
 btn.disabled = false;
 
