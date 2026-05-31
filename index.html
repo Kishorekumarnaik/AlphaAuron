@@ -247,6 +247,45 @@
       background:#d10000;
       border-radius:20px;
     }
+    .cta-btn{
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  padding:18px 22px;
+  background:linear-gradient(135deg,#d10000,#7a0000);
+  color:#fff;
+  text-decoration:none;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:0.3px;
+  box-shadow:0 15px 30px rgba(209,0,0,.3);
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* shine effect */
+.cta-btn::after{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:rgba(255,255,255,0.15);
+  transform:rotate(25deg);
+  transition:0.5s;
+}
+
+.cta-btn:hover::after{
+  left:120%;
+}
+
+.cta-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 20px 45px rgba(209,0,0,.4);
+}
 
     /* STATS */
 
@@ -774,9 +813,9 @@ nav {
       remote opportunities, leadership systems, and professional growth.
     </p>
 
-    <button>
-      Become Freelancer At AlphaAuron Private Limited
-    </button>
+    <a href="application.html" class="cta-btn">
+  Become Freelancer at Alpha Auron Private Limited
+    </a>
 
   </section>
 
