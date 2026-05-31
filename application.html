@@ -338,8 +338,11 @@ to{transform:scale(1);opacity:1;}
 
 <script>
 
-emailjs.init("0EXFtV9KEAiw-Qwyg");
 
+emailjs.init({
+  publicKey: "0EXFtV9KEAiw-Qwyg"
+});
+  
 const form = document.getElementById("applicationForm");
 const btn = document.querySelector(".submit-btn");
 const popup = document.getElementById("popup");
